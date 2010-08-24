@@ -1,21 +1,26 @@
 package com.ikai.gaeauth.async;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class AuthenticatedRequestTask extends AsyncTask<String, Void, HttpResponse> {
 	  
 	DefaultHttpClient http_client = new DefaultHttpClient();
+	Context context;
+	
+	public AuthenticatedRequestTask(Context _context) {
+		context = _context;
+	}
 		
     protected HttpResponse doInBackground(String... urls) {
             try {
@@ -37,7 +42,7 @@ public class AuthenticatedRequestTask extends AsyncTask<String, Void, HttpRespon
                     // String first_line = reader.readLine();
                     Log.i(AuthenticatedRequestTask.class.getName(), "Received auth token");
                     // TODO: Make this work
-                    // Toast.makeText(getApplicationContext(), first_line, Toast.LENGTH_LONG).show();                          
+                    Toast.makeText(context, "RECEIVED AUTH TOKEN", Toast.LENGTH_SHORT).show();                          
             } catch (IllegalStateException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

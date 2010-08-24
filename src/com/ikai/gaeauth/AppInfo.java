@@ -32,6 +32,6 @@ public class AppInfo extends Activity {
 		Account account = (Account) intent.getExtras().get("account");
 
 		accountManager.getAuthToken(account, "ah", false,
-				new GetAuthTokenCallback(this), null);
+				new GetAuthTokenCallback(getApplicationContext()), null);
 	}
 }

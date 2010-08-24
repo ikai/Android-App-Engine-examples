@@ -9,10 +9,16 @@ import org.apache.http.client.params.ClientPNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 public class GetCookieTask extends AsyncTask<String, Void, Boolean> {
 	DefaultHttpClient http_client = new DefaultHttpClient();
+	Context context;
+	
+	public GetCookieTask(Context _context) {
+		context = _context;
+	}
 	
 	protected Boolean doInBackground(String... tokens) {
 		try {
@@ -47,7 +53,7 @@ public class GetCookieTask extends AsyncTask<String, Void, Boolean> {
 	}
 
 	protected void onPostExecute(Boolean result) {
-		new AuthenticatedRequestTask()
+		new AuthenticatedRequestTask(context)
 				.execute("http://py-blobstore.appspot.com/admin/");
 	}
 

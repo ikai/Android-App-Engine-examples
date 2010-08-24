@@ -44,6 +44,6 @@ public class GetAuthTokenCallback implements AccountManagerCallback<Bundle> {
 
 	protected void onGetAuthToken(Bundle bundle) {
 		String auth_token = bundle.getString(AccountManager.KEY_AUTHTOKEN);
-		new GetCookieTask().execute(auth_token);
+		new GetCookieTask(context).execute(auth_token);
 	}
 };
