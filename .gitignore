@@ -1,0 +1,7 @@
+.classpath
+.gitignore
+.project
+AndroidManifest.out.xml
+bin
+default.properties
+gen
